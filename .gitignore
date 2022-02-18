@@ -1,2 +1,2 @@
-/node_modules
-./packages/example-react-ui
+node_modules
+example-react-ui
