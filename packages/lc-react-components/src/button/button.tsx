@@ -14,22 +14,27 @@ type ButtonTypes =
 
 interface ButtonProps {
   type?: ButtonTypes
-  ghost?: boolean
-  loading?: boolean
-  shadow?: boolean
-  auto?: boolean
-  effect?: boolean
-  disabled?: boolean
-  htmlType?: React.ButtonHTMLAttributes<any>['type']
-  icon?: React.ReactNode
-  iconRight?: React.ReactNode
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
-  className?: string
+  ghost?: boolean;
+  loading?: boolean;
+  shadow?: boolean;
+  auto?: boolean;
+  effect?: boolean;
+  disabled?: boolean;
+  htmlType?: React.ButtonHTMLAttributes<unknown>['type'];
+  icon?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement>((props, buttonRef) => {
-  const { children } = props;
-  return (<button ref={buttonRef}>{children}</button>);
-})
 
-export default Button;
+
+
+const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props, buttonRef) => {
+	const { children, htmlType } = props;
+	return (<button type={htmlType} ref={buttonRef}>{children}</button>);
+};
+
+Button.displayName = 'Button';
+
+export default React.forwardRef(Button);
