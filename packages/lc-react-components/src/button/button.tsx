@@ -27,9 +27,6 @@ interface ButtonProps {
   className?: string;
 }
 
-
-
-
 const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props, buttonRef) => {
 	const { children, htmlType } = props;
 	return (<button type={htmlType} ref={buttonRef}>{children}</button>);
