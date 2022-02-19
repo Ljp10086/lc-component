@@ -2,3 +2,4 @@ node_modules
 example-react-ui
 lib
 dist
+coverage
