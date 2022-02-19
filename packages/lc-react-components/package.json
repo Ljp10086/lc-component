@@ -21,7 +21,7 @@
     "url": "git+https://github.com/Ljp10086/lc-component.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
+    "test": "jest",
     "build": "rollup -c",
     "dev": "rollup -c -w"
   },
