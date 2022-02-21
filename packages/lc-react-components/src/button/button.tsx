@@ -25,13 +25,17 @@ interface ButtonProps {
   iconRight?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  children?: React.ReactNode;
 }
 
-const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props, buttonRef) => {
-	const { children, htmlType } = props;
-	return (<button type={htmlType} ref={buttonRef}>{children}</button>);
-};
+// ButtonProps & 
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+	const { children } = props;
+	const buttonRef = (ref as any) || React.createRef<HTMLElement>();
+
+	return (<button ref={buttonRef}>{ children }</button>);
+});
 
 Button.displayName = 'Button';
 
-export default React.forwardRef(Button);
+export default Button;

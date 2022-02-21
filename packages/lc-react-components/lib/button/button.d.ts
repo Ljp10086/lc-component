@@ -13,6 +13,7 @@ interface ButtonProps {
     iconRight?: React.ReactNode;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     className?: string;
+    children?: React.ReactNode;
 }
-declare const _default: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
-export default _default;
+declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export default Button;

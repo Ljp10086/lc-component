@@ -1,10 +1,11 @@
 import React from 'react';
 
-var Button = function (props, buttonRef) {
-    var children = props.children, htmlType = props.htmlType;
-    return (React.createElement("button", { type: htmlType, ref: buttonRef }, children));
-};
+// ButtonProps & 
+const Button = React.forwardRef((props, ref) => {
+    const { children } = props;
+    const buttonRef = ref || React.createRef();
+    return (React.createElement("button", { ref: buttonRef }, children));
+});
 Button.displayName = 'Button';
-var button = React.forwardRef(Button);
 
-export { button as Button };
+export { Button };
