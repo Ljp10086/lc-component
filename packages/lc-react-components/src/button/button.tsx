@@ -28,9 +28,8 @@ interface ButtonProps {
   children?: React.ReactNode;
 }
 
-// ButtonProps & 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-	const { children } = props;
+	const { children, ...rest } = props;
 	const buttonRef = (ref as any) || React.createRef<HTMLElement>();
 
 	return (<button ref={buttonRef}>{ children }</button>);
