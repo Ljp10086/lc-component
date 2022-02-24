@@ -3,5 +3,5 @@
 const icons = require('..');
 
 describe('@viterian/icons', () => {
-    it('needs tests');
+	it('needs tests');
 });

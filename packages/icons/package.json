@@ -1,49 +1,49 @@
 {
-  "name": "@vitrain/react-icons",
-  "version": "1.0.2",
-  "description": "The icon components for react",
-  "author": "鲁举佩 <653390161@qq.com>",
-  "homepage": "https://github.com/Ljp10086/lc-component#readme",
-  "license": "MIT",
-  "module": "lib/index.js",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ljp10086/lc-component.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "ts-node ./src/index.ts"
-  },
-  "bugs": {
-    "url": "https://github.com/Ljp10086/lc-component/issues"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
-    "@types/svgo": "^2.6.2",
-    "svgo": "^2.8.0",
-    "ts-node": "^10.3.0"
-  },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "gitHead": "89557aa7c450f3f42983b4b2664d735acbe0efb2"
+	"name": "@vitrain/react-icons",
+	"version": "1.0.2",
+	"description": "The icon components for react",
+	"author": "鲁举佩 <653390161@qq.com>",
+	"homepage": "https://github.com/Ljp10086/lc-component#readme",
+	"license": "MIT",
+	"module": "lib/index.js",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"directories": {
+		"lib": "lib",
+		"test": "__tests__"
+	},
+	"files": [
+		"lib"
+	],
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Ljp10086/lc-component.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "ts-node ./src/index.ts"
+	},
+	"bugs": {
+		"url": "https://github.com/Ljp10086/lc-component/issues"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.17.5",
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-react": "^7.16.7",
+		"@babel/preset-typescript": "^7.16.7",
+		"@types/react": "^17.0.39",
+		"@types/react-dom": "^17.0.11",
+		"@types/svgo": "^2.6.2",
+		"svgo": "^2.8.0",
+		"ts-node": "^10.3.0"
+	},
+	"peerDependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"gitHead": "89557aa7c450f3f42983b4b2664d735acbe0efb2"
 }

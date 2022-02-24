@@ -1,6 +1,6 @@
 import { OptimizeOptions } from 'svgo';
 
-const svgoConfig: OptimizeOptions =	{
+const svgoConfig: OptimizeOptions = {
 	plugins: [
 		'cleanupAttrs',
 		'removeDoctype',
@@ -36,12 +36,12 @@ const svgoConfig: OptimizeOptions =	{
 		'convertShapeToPath',
 		'sortAttrs',
 		'removeDimensions',
-		{ 
+		{
 			name: 'removeAttrs',
 			params: {
-				attrs: '(class)'
-			}
-		}
+				attrs: '(class)',
+			},
+		},
 	],
 };
 
