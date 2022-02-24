@@ -2,7 +2,7 @@ import {optimize, OptimizedSvg} from 'svgo';
 import svgoConfig from './svgo.config';
 import * as path from 'path';
 import * as fs from 'fs';
-import {baseDeclarationTemplate, indexBabelConfig, indexDeclarationTemplate, indexExportTemplate, mainBabelConfig, mainDeclarationTemplate, styleParse, template} from './utils';
+import {indexBabelConfig, indexDeclarationTemplate, indexExportTemplate, mainBabelConfig, mainDeclarationTemplate, styleParse, template} from './utils';
 import { transform } from '@babel/core';
 
 const svgPath = path.join(__dirname, '../svg');
