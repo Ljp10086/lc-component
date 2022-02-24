@@ -6,7 +6,8 @@
 		"packages/*"
 	],
 	"scripts": {
-		"lint": "eslint --fix"
+		"lint": "eslint --fix",
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",
@@ -20,14 +21,16 @@
 		"eslint": "^8.9.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-react": "^7.28.0",
+		"husky": "^7.0.4",
 		"jest": "^27.5.1",
 		"lerna": "^4.0.0",
+		"lint-staged": "^12.3.4",
 		"prettier": "^2.5.1"
 	},
 	"dependencies": {},
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  }
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	}
 }
