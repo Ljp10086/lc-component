@@ -6,6 +6,7 @@
 		"packages/*"
 	],
 	"scripts": {
+		"cz": "git add . && cz",
 		"lint": "eslint --fix",
 		"prepare": "husky install"
 	},
