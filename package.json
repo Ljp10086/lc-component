@@ -1,7 +1,7 @@
 {
   "name": "lc-react-components",
   "description": "Lightweight React UI Components inspired on antd",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
