@@ -11,7 +11,7 @@ export default {
 	input: inputFilePath,
 	output: {
 		file: outputFileDir,
-		// format: '',
+		format: 'es',
 	},
 	plugins: [
 		clear({
