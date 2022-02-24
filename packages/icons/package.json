@@ -1,11 +1,11 @@
 {
   "name": "@viterian/icons",
   "version": "1.0.0",
-  "description": "> TODO: description",
+  "description": "The icon components for react",
   "author": "鲁举佩 <653390161@qq.com>",
   "homepage": "https://github.com/Ljp10086/lc-component#readme",
   "license": "ISC",
-  "module": "",
+  "module": "lib/index.js",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -37,11 +37,6 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/svgo": "^2.6.2",
-    "cz-conventional-changelog": "^3.3.0",
-    "rollup": "^2.67.3",
-    "rollup-plugin-clear": "^2.0.7",
-    "rollup-plugin-less": "^1.1.3",
-    "rollup-plugin-typescript2": "^0.31.2",
     "svgo": "^2.8.0",
     "ts-node": "^10.3.0"
   },
@@ -49,7 +44,5 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "dependencies": {
-    "@geist-ui/icons": "^1.0.1"
-  }
+  "dependencies": {}
 }
