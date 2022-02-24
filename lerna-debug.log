@@ -1,7 +1,7 @@
-45 error Error: Command failed with exit code 128: git tag lc-react-components@0.0.1 -m lc-react-components@0.0.1
-45 error fatal: tag 'lc-react-components@0.0.1' already exists
-45 error     at makeError (/Users/ljp/Documents/GitHub/lc-react/node_modules/execa/lib/error.js:60:11)
-45 error     at handlePromise (/Users/ljp/Documents/GitHub/lc-react/node_modules/execa/index.js:118:26)
-45 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
-45 error     at async Promise.all (index 1)
-45 error     at async Promise.all (index 0)
+46 error Error: Command failed with exit code 128: git tag lc-react-components@1.0.0 -m lc-react-components@1.0.0
+46 error fatal: tag 'lc-react-components@1.0.0' already exists
+46 error     at makeError (/Users/ljp/Documents/GitHub/lc-react/node_modules/execa/lib/error.js:60:11)
+46 error     at handlePromise (/Users/ljp/Documents/GitHub/lc-react/node_modules/execa/index.js:118:26)
+46 error     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+46 error     at async Promise.all (index 1)
+46 error     at async Promise.all (index 0)
