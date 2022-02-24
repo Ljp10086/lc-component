@@ -3,8 +3,10 @@
 > The icon components for react
 
 ## Install
-```$ npm install @viterian/icons```
-```$ yarn add @viterian/icons```
+
+```$ npm install @viterian/react-icons```
+
+```$ yarn add @viterian/react-icons```
 
 ## Usage
 ```
