@@ -1,5 +1,6 @@
 {
-  "name": "lc-react-components",
+  "name": "@viterian",
+  "version": "0.0.1",
   "description": "Lightweight React UI Components inspired on antd",
   "private": true,
   "workspaces": [

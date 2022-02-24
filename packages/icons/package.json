@@ -1,6 +1,6 @@
 {
   "name": "@viterian/icons",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "The icon components for react",
   "author": "鲁举佩 <653390161@qq.com>",
   "homepage": "https://github.com/Ljp10086/lc-component#readme",
@@ -43,5 +43,6 @@
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  }
+  },
+  "gitHead": "a15253e17ac262e2509b36020957ac99eef5876e"
 }
