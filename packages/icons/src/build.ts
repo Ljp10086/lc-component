@@ -13,8 +13,9 @@ import {
 } from './utils';
 import { transform } from '@babel/core';
 
-const svgPath = path.join(__dirname, '../svg');
-const outPath = path.join(__dirname, '../lib');
+// for test icons count
+export const svgPath = path.join(__dirname, '../svg');
+export const outPath = path.join(__dirname, '../lib');
 const outIndexPath = path.join(outPath, 'index.js');
 const outIndexDeclarationFilePath = path.join(outPath, 'index.d.ts');
 const svgPaths = fs.readdirSync(svgPath);
