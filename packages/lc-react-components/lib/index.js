@@ -34,6 +34,7 @@ const StatusDot = (props) => {
         React.createElement("span", { className: classes }),
         label && React.createElement("span", { className: "label" }, label)));
 };
+StatusDot.displayName = 'VtaStatusDot';
 
 const Loading = (props) => {
     const { size = 1, className = '', children } = props, attrs = __rest(props, ["size", "className", "children"]);
@@ -47,6 +48,7 @@ const Loading = (props) => {
         React.createElement("i", { style: iconStyle }),
         React.createElement("i", { style: iconStyle })));
 };
+Loading.displayName = 'VtaLoading';
 
 const isObject = (value) => value.toString() === '[object Object]';
 const parseObjToStr = (classNameObj) => {

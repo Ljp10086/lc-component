@@ -30,13 +30,13 @@ interface ButtonProps {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	(props, ref) => {
-		const { children, ...rest } = props;
+		const { children, ...attrs } = props;
 		const buttonRef = (ref as any) || React.createRef<HTMLElement>();
 
 		return <button ref={buttonRef}>{children}</button>;
 	},
 );
 
-Button.displayName = 'Button';
+Button.displayName = 'VtaButton';
 
 export default Button;

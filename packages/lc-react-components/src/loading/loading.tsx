@@ -27,4 +27,6 @@ const Loading: React.FC<LoadingProps & NativeAttrs> = (props) => {
 	);
 };
 
+Loading.displayName = 'VtaLoading';
+
 export default Loading;

@@ -29,4 +29,6 @@ const StatusDot: React.FC<StatusDotProps & NativeAttrs> = (props) => {
 	);
 };
 
+StatusDot.displayName = 'VtaStatusDot';
+
 export default StatusDot;
