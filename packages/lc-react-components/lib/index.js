@@ -32,7 +32,20 @@ const StatusDot = (props) => {
     const classes = useClasses('dot', `dot-${state}`);
     return (React.createElement("span", Object.assign({ className: useClasses('dot-wrapper', classNames) }, attrs),
         React.createElement("span", { className: classes }),
-        label && React.createElement("span", { className: 'label' }, label)));
+        label && React.createElement("span", { className: "label" }, label)));
+};
+
+const Loading = (props) => {
+    const { size = 1, className = '', children } = props, attrs = __rest(props, ["size", "className", "children"]);
+    const classes = useClasses('vta-loading', className);
+    const iconStyle = React.useMemo(() => {
+        const loadingSize = size / 4;
+        return { width: `${loadingSize}rem`, height: `${loadingSize}rem` };
+    }, [size]);
+    return (React.createElement("span", Object.assign({ className: classes }, attrs),
+        React.createElement("i", { style: iconStyle }),
+        React.createElement("i", { style: iconStyle }),
+        React.createElement("i", { style: iconStyle })));
 };
 
 const isObject = (value) => value.toString() === '[object Object]';
@@ -48,16 +61,18 @@ const parseObjToStr = (classNameObj) => {
     return str;
 };
 const useClasses = (...classNames) => {
-    const classNameStr = classNames.reduce((str, className) => {
+    const classNameStr = React.useMemo(() => classNames.reduce((str, className) => {
         if (isObject(className)) {
-            str = str ? `${str} ${parseObjToStr(className)}` : `${parseObjToStr(className)}`;
+            str = str
+                ? `${str} ${parseObjToStr(className)}`
+                : `${parseObjToStr(className)}`;
         }
         else {
             str = str ? `${str} ${className}` : `${className}`;
         }
         return str;
-    }, '');
+    }, ''), [...classNames]);
     return classNameStr.trim();
 };
 
-export { StatusDot, useClasses };
+export { Loading, StatusDot, useClasses };

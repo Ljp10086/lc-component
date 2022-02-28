@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 type ClassNamesObject = {
 	[K: string]: boolean | string | number | null | undefined;
 };
@@ -19,16 +21,20 @@ const parseObjToStr = (classNameObj: ClassNamesObject): string => {
 };
 
 const useClasses = (...classNames: ClassNameType[]): string => {
-	const classNameStr = classNames.reduce((str: string, className) => {
-		if (isObject(className)) {
-			str = str
-				? `${str} ${parseObjToStr(className as ClassNamesObject)}`
-				: `${parseObjToStr(className as ClassNamesObject)}`;
-		} else {
-			str = str ? `${str} ${className}` : `${className}`;
-		}
-		return str;
-	}, '');
+	const classNameStr = React.useMemo(
+		() =>
+			classNames.reduce((str: string, className) => {
+				if (isObject(className)) {
+					str = str
+						? `${str} ${parseObjToStr(className as ClassNamesObject)}`
+						: `${parseObjToStr(className as ClassNamesObject)}`;
+				} else {
+					str = str ? `${str} ${className}` : `${className}`;
+				}
+				return str;
+			}, ''),
+		[...classNames],
+	);
 
 	return classNameStr.trim();
 };

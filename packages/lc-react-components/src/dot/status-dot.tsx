@@ -1,6 +1,6 @@
 import { useClasses } from 'lc-react-components';
 import * as React from 'react';
-import './StatusDot.less';
+import './status-dot.less';
 
 type DotStateTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error';
 
