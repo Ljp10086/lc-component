@@ -22,7 +22,7 @@
 		"url": "git+https://github.com/Ljp10086/lc-component.git"
 	},
 	"scripts": {
-		"test": "jest",
+		"test": "jest --coverage=true",
 		"build": "rollup -c",
 		"dev": "rollup -c -w"
 	},
@@ -42,5 +42,6 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2"
 	},
-	"gitHead": "89557aa7c450f3f42983b4b2664d735acbe0efb2"
+	"gitHead": "89557aa7c450f3f42983b4b2664d735acbe0efb2",
+	"dependencies": {}
 }

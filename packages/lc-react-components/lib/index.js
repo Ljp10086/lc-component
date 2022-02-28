@@ -1,11 +1,63 @@
-import React from 'react';
+import * as React from 'react';
 
-// ButtonProps & 
-const Button = React.forwardRef((props, ref) => {
-    const { children } = props;
-    const buttonRef = ref || React.createRef();
-    return (React.createElement("button", { ref: buttonRef }, children));
-});
-Button.displayName = 'Button';
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
 
-export { Button };
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+const StatusDot = (props) => {
+    const { state = 'default', className: classNames = '', label } = props, attrs = __rest(props, ["state", "className", "label"]);
+    const classes = useClasses('dot', `dot-${state}`);
+    return (React.createElement("span", Object.assign({ className: useClasses('dot-wrapper', classNames) }, attrs),
+        React.createElement("span", { className: classes }),
+        label && React.createElement("span", { className: 'label' }, label)));
+};
+
+const isObject = (value) => value.toString() === '[object Object]';
+const parseObjToStr = (classNameObj) => {
+    const keys = Object.keys(classNameObj);
+    let str = '';
+    keys.forEach((objKey) => {
+        const objValue = classNameObj[objKey];
+        if (objValue) {
+            str = str ? `${str} ${objKey}` : `${objKey}`;
+        }
+    });
+    return str;
+};
+const useClasses = (...classNames) => {
+    const classNameStr = classNames.reduce((str, className) => {
+        if (isObject(className)) {
+            str = str ? `${str} ${parseObjToStr(className)}` : `${parseObjToStr(className)}`;
+        }
+        else {
+            str = str ? `${str} ${className}` : `${className}`;
+        }
+        return str;
+    }, '');
+    return classNameStr.trim();
+};
+
+export { StatusDot, useClasses };
