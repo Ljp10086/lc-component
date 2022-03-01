@@ -1,3 +1,4 @@
+import useClasses from '../use-classes/index';
 import React from 'react';
 
 type ButtonTypes =
@@ -30,10 +31,15 @@ interface ButtonProps {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	(props, ref) => {
-		const { children, ...attrs } = props;
+		const { children, className: classNames = '', ...attrs } = props;
 		const buttonRef = (ref as any) || React.createRef<HTMLElement>();
+		const classes = useClasses('vta-btn', classNames);
 
-		return <button ref={buttonRef}>{children}</button>;
+		return (
+			<button className={classes} ref={buttonRef}>
+				{children}
+			</button>
+		);
 	},
 );
 

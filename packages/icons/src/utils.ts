@@ -1,18 +1,23 @@
 export const indexExportTemplate = (componentName: string) =>
 	`export { default as ${componentName} } from './${componentName}';\n`;
 
+export const getFileName = (svgFileName: string) =>
+	svgFileName
+		.split('-')
+		.map((e) => e[0].toUpperCase() + e.slice(1))
+		.join('')
+		.replace('.svg', '');
+
 export const template = (
 	name: string,
 	svgString: string,
 ) => `import React from 'react';
 
 const ${name} = React.forwardRef((props, ref) => {
-	const { size = 24, color, ...rest } = props;
+	const { size = 24, color = 'currentColor', ...rest } = props;
 	const svgRef = ref || React.createRef();
 	return (
-		<i>
-      ${svgString}
-    </i>
+		${svgString}
 	);
 });
 
@@ -57,3 +62,16 @@ export default ${name};
 
 export const indexDeclarationTemplate = (name: string) =>
 	`export {default as ${name}} from './${name}';\n`;
+
+export const injectCss = () => {
+	const head = document.querySelector('head');
+	const style = document.createElement('style');
+	style.innerHTML = `
+		.action {
+			display: inline-block;
+    	color: inherit;
+			line-height: 0;
+		}
+	`;
+	head?.appendChild(style);
+};

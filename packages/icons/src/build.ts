@@ -3,6 +3,7 @@ import svgoConfig from './svgo.config';
 import * as path from 'path';
 import * as fs from 'fs';
 import {
+	getFileName,
 	indexBabelConfig,
 	indexDeclarationTemplate,
 	indexExportTemplate,
@@ -35,32 +36,40 @@ const svgPaths = fs.readdirSync(svgPath);
 	}
 })();
 
+const generateDeclareFile = (fileName: string) => {
+	const declarationTemplate = mainDeclarationTemplate(fileName);
+	fs.writeFileSync(path.join(outPath, `${fileName}.d.ts`), declarationTemplate);
+};
+
+const generateSvgComponent = (optimizeString: string, fileName: string) => {
+	const temStr = template(fileName, styleParse(optimizeString));
+	const templateStr = transform(temStr, mainBabelConfig)?.code ?? '';
+	fs.writeFileSync(path.join(outPath, `${fileName}.js`), templateStr);
+};
+
+const generateIndexFile = (fileName: string) => {
+	fs.appendFileSync(
+		outIndexPath,
+		transform(indexExportTemplate(fileName), indexBabelConfig)?.code ?? '',
+	);
+};
+
+const generateIndexDeclarationFile = (fileName: string) => {
+	fs.appendFileSync(
+		outIndexDeclarationFilePath,
+		indexDeclarationTemplate(fileName),
+	);
+};
+
 export const generate = () => {
 	svgPaths.forEach((svgFileName) => {
 		const svgFullPath = path.join(svgPath, svgFileName);
 		const svg = fs.readFileSync(svgFullPath).toString();
 		const { data: optimizeString } = optimize(svg, svgoConfig) as OptimizedSvg;
-		const fileName = svgFileName
-			.split('-')
-			.map((e) => e[0].toUpperCase() + e.slice(1))
-			.join('')
-			.replace('.svg', '');
-		const temStr = template(fileName, styleParse(optimizeString));
-		console.log('first', temStr);
-		const templateStr = transform(temStr, mainBabelConfig)?.code ?? '';
-		const declarationTemplate = mainDeclarationTemplate(fileName);
-		fs.writeFileSync(
-			path.join(outPath, `${fileName}.d.ts`),
-			declarationTemplate,
-		);
-		fs.writeFileSync(path.join(outPath, `${fileName}.js`), templateStr);
-		fs.appendFileSync(
-			outIndexDeclarationFilePath,
-			indexDeclarationTemplate(fileName),
-		);
-		fs.appendFileSync(
-			outIndexPath,
-			transform(indexExportTemplate(fileName), indexBabelConfig)?.code ?? '',
-		);
+		const fileName = getFileName(svgFileName);
+		generateDeclareFile(fileName);
+		generateSvgComponent(optimizeString, fileName);
+		generateIndexDeclarationFile(fileName);
+		generateIndexFile(fileName);
 	});
 };
