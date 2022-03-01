@@ -1,6 +1,6 @@
 {
 	"name": "@vitrain/react-ui",
-	"version": "1.0.1",
+	"version": "1.1.0-alpha.0",
 	"description": "> TODO: description",
 	"author": "鲁举佩 <653390161@qq.com>",
 	"homepage": "https://github.com/Ljp10086/lc-component#readme",
@@ -42,6 +42,5 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2"
 	},
-	"gitHead": "89557aa7c450f3f42983b4b2664d735acbe0efb2",
-	"dependencies": {}
+	"gitHead": "89557aa7c450f3f42983b4b2664d735acbe0efb2"
 }
