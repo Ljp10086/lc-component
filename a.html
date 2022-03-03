@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+		<style>
+			html,
+			body {
+				margin: 0;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				/* cursor:none; */
+				background: black;
+			}
+
+			.ripple {
+				position: absolute; /* 为了保持和button的位置关系 */
+				border-radius: 50%; /* 水波纹圆形 */
+				background: rgba(255, 255, 255, 0.4); /* 水波纹颜色 */
+
+				/* 下面与动画效果相关 是0%时候的状态 */
+				/* 默认的 transform-origin 是 center 即中心点 */
+				transform: scale(0);
+				opacity: 1;
+			}
+
+			button {
+				display: block; /* button 默认是inline-block 无法用margin给它居中 */
+				margin: 50px auto;
+				height: 60px;
+				width: 150px;
+				color: #fff;
+				font-size: 16px;
+				background: #e95546;
+				outline: none;
+				border: 0;
+				cursor: pointer; /* 为了增加用户体验 */
+				position: relative; /* 为了保持和ripple的位置关系 */
+				overflow: hidden;
+				/* 为了遮盖超出的ripple */
+			}
+
+			.rippleEffect {
+				/* 执行时长0.6s、效果为渐变(linear)、名称为rippleDrop的动画 */
+				-webkit-animation: rippleDrop 0.6s linear;
+				animation: rippleDrop 0.6s linear;
+			}
+
+			@keyframes rippleDrop {
+				/* 下面是动画100%时候的状态 */
+				100% {
+					transform: scale(2);
+					opacity: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<!-- <button>123123</button> -->
+
+		<!-- <script>
+  const button = document.querySelector('button');
+  button.addEventListener('click', (e) => {
+    const dom = document.createElement('div');
+    const width = Math.max(button.offsetWidth, button.offsetHeight);
+    dom.classList.add('ripple');
+    dom.style.width = dom.style.height = width + 'px';
+    const rect = button.getBoundingClientRect();
+    console.log(rect)
+    dom.style.top = e.pageY - rect.top - width / 2 + 'px';
+    dom.style.left = e.pageX - rect.left - width / 2 + 'px';
+    dom.classList.add('rippleEffect');
+    button.appendChild(dom);
+  })
+</script> -->
+
+		<script>
+			var ctx = document.getElementById('canvas'),
+				content = ctx.getContext('2d'),
+				round = [],
+				WIDTH,
+				HEIGHT,
+				initRoundPopulation = 1180;
+
+			WIDTH = document.documentElement.clientWidth;
+			HEIGHT = document.documentElement.clientHeight;
+
+			ctx.width = WIDTH;
+			ctx.height = HEIGHT;
+
+			function init() {
+				for (var i = 0; i < initRoundPopulation; i++) {
+					round[i] = new Round_item(
+						i,
+						Math.random() * WIDTH,
+						Math.random() * HEIGHT,
+					);
+					round[i].draw();
+				}
+				animate();
+			}
+
+			function Round_item(index, x, y) {
+				this.index = index;
+				this.x = x;
+				this.y = y;
+				this.r = Math.random() * 2 + 1;
+				const alpha = (Math.floor(Math.random() * 10) + 1) / 10 / 2;
+				this.color = `rgba(255, 255, 255, ${alpha})`;
+			}
+
+			Round_item.prototype.draw = function () {
+				content.fillStyle = this.color;
+				content.shadowBlur = this.r * 2;
+				content.beginPath();
+				content.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+				content.closePath();
+				content.fill();
+			};
+
+			Round_item.prototype.move = function () {
+				this.y -= 0.15;
+				if (this.y <= -10) {
+					this.y = HEIGHT + 10;
+				}
+				this.draw();
+			};
+
+			function animate() {
+				content.clearRect(0, 0, WIDTH, HEIGHT);
+
+				for (var i in round) {
+					round[i].move();
+				}
+				requestAnimationFrame(animate);
+			}
+
+			init();
+		</script>
+	</body>
+</html>

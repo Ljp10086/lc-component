@@ -1,4 +1,5 @@
 import * as React from 'react';
+import React__default, { useRef, useState } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -27,29 +28,6 @@ function __rest(s, e) {
     return t;
 }
 
-const StatusDot = (props) => {
-    const { state = 'default', className: classNames = '', label } = props, attrs = __rest(props, ["state", "className", "label"]);
-    const classes = useClasses('dot', `dot-${state}`);
-    return (React.createElement("span", Object.assign({ className: useClasses('dot-wrapper', classNames) }, attrs),
-        React.createElement("span", { className: classes }),
-        label && React.createElement("span", { className: "label" }, label)));
-};
-StatusDot.displayName = 'VtaStatusDot';
-
-const Loading = (props) => {
-    const { size = 1, className = '', children } = props, attrs = __rest(props, ["size", "className", "children"]);
-    const classes = useClasses('vta-loading', className);
-    const iconStyle = React.useMemo(() => {
-        const loadingSize = size / 4;
-        return { width: `${loadingSize}rem`, height: `${loadingSize}rem` };
-    }, [size]);
-    return (React.createElement("span", Object.assign({ className: classes }, attrs),
-        React.createElement("i", { style: iconStyle }),
-        React.createElement("i", { style: iconStyle }),
-        React.createElement("i", { style: iconStyle })));
-};
-Loading.displayName = 'VtaLoading';
-
 const isObject = (value) => value.toString() === '[object Object]';
 const parseObjToStr = (classNameObj) => {
     const keys = Object.keys(classNameObj);
@@ -77,4 +55,79 @@ const useClasses = (...classNames) => {
     return classNameStr.trim();
 };
 
-export { Loading, StatusDot, useClasses };
+const StatusDot = (props) => {
+    const { state = 'default', className: classNames = '', label } = props, attrs = __rest(props, ["state", "className", "label"]);
+    const classes = useClasses('dot', `dot-${state}`);
+    return (React.createElement("span", Object.assign({ className: useClasses('dot-wrapper', classNames) }, attrs),
+        React.createElement("span", { className: classes }),
+        label && React.createElement("span", { className: "label" }, label)));
+};
+StatusDot.displayName = 'VtaStatusDot';
+
+const Loading = (props) => {
+    const { size = 1, className = '', children } = props, attrs = __rest(props, ["size", "className", "children"]);
+    const classes = useClasses('vta-loading', className);
+    const iconStyle = React.useMemo(() => {
+        const loadingSize = size / 4;
+        return { width: `${loadingSize}rem`, height: `${loadingSize}rem` };
+    }, [size]);
+    return (React.createElement("span", Object.assign({ className: classes }, attrs),
+        React.createElement("i", { style: iconStyle }),
+        React.createElement("i", { style: iconStyle }),
+        React.createElement("i", { style: iconStyle })));
+};
+Loading.displayName = 'VtaLoading';
+
+const Button = React__default.forwardRef((props, ref) => {
+    const { size, type = 'default', children, iconRight, icon, variant, htmlType = 'button', className: classNames = '', onClick, disabled, loading, prefix, suffix } = props, attrs = __rest(props, ["size", "type", "children", "iconRight", "icon", "variant", "htmlType", "className", "onClick", "disabled", "loading", "prefix", "suffix"]);
+    const buttonRef = ref || React__default.createRef();
+    const classes = useClasses('vta-btn', `vta-btn-${type}`, {
+        [`vta-btn-${size}`]: size,
+        'vta-btn-ghost': variant === 'ghost',
+        'vta-btn-shadow': variant === 'shadow',
+        'vtn-button-pointer': loading
+    }, classNames);
+    const waveRef = useRef(null);
+    const [longWidth, setLongWidth] = useState(0);
+    const [drip, setDrip] = useState({ x: 0, y: 0 });
+    const [isWaving, setisWaving] = useState(false);
+    const handleClick = (e) => {
+        var _a, _b, _c;
+        if (disabled || loading) {
+            e.preventDefault();
+            return;
+        }
+        if (!isWaving) {
+            setisWaving(true);
+            const longWidth = Math.max((_a = buttonRef === null || buttonRef === void 0 ? void 0 : buttonRef.current) === null || _a === void 0 ? void 0 : _a.offsetWidth, (_b = buttonRef === null || buttonRef === void 0 ? void 0 : buttonRef.current) === null || _b === void 0 ? void 0 : _b.offsetHeight);
+            setLongWidth(longWidth);
+            const rect = (_c = waveRef === null || waveRef === void 0 ? void 0 : waveRef.current) === null || _c === void 0 ? void 0 : _c.getBoundingClientRect();
+            if (rect) {
+                setDrip({
+                    x: e.pageX - rect.x - longWidth / 2,
+                    y: e.pageY - rect.y - longWidth / 2
+                });
+            }
+        }
+        onClick === null || onClick === void 0 ? void 0 : onClick(e);
+    };
+    const handleWaveAnimationComplete = (e) => {
+        setisWaving(false);
+    };
+    return (React__default.createElement("button", Object.assign({}, attrs, { type: htmlType, disabled: disabled, onClick: handleClick, className: classes, ref: buttonRef }),
+        loading && React__default.createElement("span", { className: 'vta-btn-loading' },
+            React__default.createElement(Loading, null)),
+        prefix && React__default.createElement("span", { className: 'vta-btn-prefix' }, prefix),
+        React__default.createElement("span", null, children),
+        suffix && React__default.createElement("span", { className: 'vta-btn-suffix' }, suffix),
+        React__default.createElement("span", { ref: waveRef, className: 'wave-wrapper' },
+            React__default.createElement("div", { onAnimationEnd: (e) => handleWaveAnimationComplete(), className: useClasses('wave', { 'rippleEffect': isWaving }), style: {
+                    height: longWidth + 'px',
+                    width: longWidth + 'px',
+                    top: drip.y + 'px',
+                    left: drip.x + 'px'
+                } }))));
+});
+Button.displayName = 'VtaButton';
+
+export { Button, Loading, StatusDot, useClasses };

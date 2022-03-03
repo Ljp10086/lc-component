@@ -1,2 +1,50 @@
+@import url(./mixins.less);
+
 .vta-btn {
+	.btn();
+
+	.wave-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.vta-btn-prefix {
+		display: inline-flex;
+		margin-right: 0.5rem;
+	}
+
+	.vta-btn-suffix {
+		display: inline-flex;
+		margin-left: 0.5rem;
+	}
+
+	.wave {
+		position: absolute;
+		transform: scale(0);
+		background-color: @accents8;
+		border-radius: 50%;
+		opacity: 0.2;
+	}
+
+	.rippleEffect {
+		/* 执行时长0.6s、效果为渐变(linear)、名称为rippleDrop的动画 */
+		animation: rippleDrop 0.4s linear;
+	}
+
+	@keyframes rippleDrop {
+		/* 下面是动画100%时候的状态 */
+		100% {
+			transform: scale(2);
+			opacity: 0;
+		}
+	}
+}
+
+.vtn-button-pointer {
+	pointer-events: none;
 }

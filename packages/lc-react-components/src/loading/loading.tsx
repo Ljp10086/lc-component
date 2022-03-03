@@ -1,4 +1,4 @@
-import { useClasses } from 'lc-react-components';
+import useClasses from '../use-classes/index';
 import * as React from 'react';
 import './loading.less';
 

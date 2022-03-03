@@ -18,6 +18,6 @@ export default {
 			watch: true,
 		}),
 		typescript(),
-		less({ output: path.join(__dirname, './lib/css/index.css') }),
+		less({ output: path.join(__dirname, './lib/css/index.css'), watch: true }),
 	],
 };
