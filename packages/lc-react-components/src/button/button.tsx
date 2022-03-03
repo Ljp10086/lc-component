@@ -1,7 +1,6 @@
 import useClasses from '../use-classes/index';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import './button.less';
-import ReactDOM from 'react-dom';
+import React, { useRef, useState } from 'react';
+import './styles/button.less';
 import { Loading } from '../loading/index';
 
 type ButtonTypes =

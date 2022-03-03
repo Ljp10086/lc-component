@@ -131,4 +131,16 @@ const Button = React__default.forwardRef((props, ref) => {
 });
 Button.displayName = 'VtaButton';
 
-export { Button, Loading, StatusDot, useClasses };
+const Badge = (props) => {
+    const { type, children, outline, variant, size } = props;
+    const classes = useClasses('vta-badge', `vta-badge-${size}`, {
+        [`vta-badge-${type}`]: type,
+        [`vta-badge-contrast`]: variant === 'contrast',
+        [`vta-badge-outline`]: outline
+    });
+    return (React__default.createElement("div", { className: classes },
+        React__default.createElement("span", null, children)));
+};
+Badge.displayName = 'VtaBadge';
+
+export { Badge, Button, Loading, StatusDot, useClasses };

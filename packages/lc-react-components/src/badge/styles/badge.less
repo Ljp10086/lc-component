@@ -1,0 +1,93 @@
+.btn-type(@borderColor, @color, @backgroundColor) {
+	border-color: @borderColor;
+	color: @color;
+	background-color: @backgroundColor;
+}
+
+.vta-badge {
+	.btn-type(var(--primary-foreground), var(--primary-background), var(--primary-foreground));
+	height: 20px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 8px;
+	font-size: 14px;
+	line-height: normal;
+	border-radius: 10px;
+	border-width: 1px;
+	border-style: solid;
+	white-space: nowrap;
+
+	&-success {
+		.btn-type(var(--success-default), var(--primary-background), var(--success-default));
+	}
+
+	&-error {
+		.btn-type(var(--error-default), var(--primary-background), var(--error-default));
+	}
+
+	&-warning {
+		.btn-type(var(--warning-default), var(--primary-background), var(--warning-default));
+	}
+
+	&-violet {
+		.btn-type(var(--violet-default), var(--primary-background), var(--violet-default));
+	}
+
+	&-secondary {
+		.btn-type(var(--secondary-default), var(--primary-background), var(--secondary-default));
+	}
+
+	&-success&-contrast {
+		.btn-type(var(--success-default), var(--success-default), var(--success-lighter));
+	}
+
+	&-error&-contrast {
+		.btn-type(var(--error-default), var(--error-default), var(--error-lighter));
+	}
+
+	&-warning&-contrast {
+		.btn-type(var(--warning-default), var(--warning-default), var(--warning-lighter));
+	}
+
+	&-violet&-contrast {
+		.btn-type(var(--violet-default), var(--violet-default), var(--violet-lighter));
+	}
+
+	&-secondary&-contrast {
+		.btn-type(var(--secondary-default), var(--secondary-default), var(--secondary-lighter));
+	}
+
+	&-outline {
+		.btn-type(var(--primary-foreground), var(--primary-foreground), transparent);
+	}
+
+	&-success&-outline {
+		.btn-type(var(--success-default), var(--success-default), transparent);
+	}
+
+	&-error&-outline {
+		.btn-type(var(--error-default), var(--error-default), transparent);
+	}
+
+	&-warning&-outline {
+		.btn-type(var(--warning-default), var(--warning-default), transparent);
+	}
+
+	&-violet&-outline {
+		.btn-type(var(--violet-default), var(--violet-default), transparent);
+	}
+
+	&-secondary&-outline {
+		.btn-type(var(--secondary-default), var(--secondary-default), transparent);
+	}
+
+	&-small {
+		font-size: 0.75rem;
+	}
+
+	&-large {
+		height: 24px;
+		font-size: 1rem;
+	}
+}

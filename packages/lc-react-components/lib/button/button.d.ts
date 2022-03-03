@@ -1,5 +1,5 @@
 import React from 'react';
-import './button.less';
+import './styles/button.less';
 declare type ButtonTypes = 'default' | 'secondary' | 'success' | 'warning' | 'error' | 'cyan' | 'alert' | 'violet';
 interface ButtonProps {
     prefix?: string | JSX.Element;

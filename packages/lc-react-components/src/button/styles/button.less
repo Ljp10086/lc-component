@@ -4,11 +4,7 @@
 	.btn();
 
 	.wave-wrapper {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		.cover();
 		pointer-events: none;
 		overflow: hidden;
 	}
@@ -26,7 +22,7 @@
 	.wave {
 		position: absolute;
 		transform: scale(0);
-		background-color: @accents8;
+		background-color: var(--accents-8);
 		border-radius: 50%;
 		opacity: 0.2;
 	}
