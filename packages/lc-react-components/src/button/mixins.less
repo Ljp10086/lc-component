@@ -4,6 +4,7 @@
 	.btn-type(@primaryForeground, @primaryBackground, @primaryForeground);
 	.btn-disabled();
 	display: inline-flex;
+	justify-content: center;
 	align-items: center;
 	position: relative;
 	height: 38px;
@@ -13,7 +14,7 @@
 	border-radius: 0.25rem;
 	cursor: pointer;
 	user-select: none;
-	font-size: 14px;
+	font-size: 1rem;
 	text-align: center;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -296,11 +297,41 @@
 
 	&-small {
 		height: 30px;
+		font-size: 0.875rem;
 	}
 
 	&-large {
 		height: 45px;
-		font-size: 1rem;
+		font-size: 1.25rem;
+	}
+
+	&-square {
+		width: 38px;
+		padding: 0;
+		text-overflow: ellipsis;
+	}
+
+	&-square&-small {
+		width: 30px;
+	}
+
+	&-square&-large {
+		width: 45px;
+	}
+
+	&-circle {
+		padding: 0;
+		width: 38px;
+		text-overflow: ellipsis;
+		border-radius: 50%;
+	}
+
+	&-circle&-small {
+		width: 30px;
+	}
+
+	&-circle&-large {
+		width: 45px;
 	}
 }
 
@@ -329,6 +360,3 @@
 		.btn-type(@borderColor, @color, @backgroundColor);
 	}
 }
-// .vta-btn-loading {
-//   .btn-type(@violetDefault, @primaryBackground, @violetDefault);
-// }

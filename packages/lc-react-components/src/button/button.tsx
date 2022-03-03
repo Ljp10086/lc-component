@@ -18,6 +18,7 @@ interface ButtonProps {
 	prefix?: string | JSX.Element;
 	suffix?: string | JSX.Element;
 	type?: ButtonTypes;
+	shape?: 'square' | 'circle';
 	variant?: 'ghost' | 'shadow';
 	loading?: boolean;
 	disabled?: boolean;
@@ -40,6 +41,7 @@ const Button = React.forwardRef<
 >((props, ref) => {
 	const {
 		size,
+		shape,
 		type = 'default',
 		children,
 		iconRight,
@@ -60,6 +62,7 @@ const Button = React.forwardRef<
 		'vta-btn',
 		`vta-btn-${type}`,
 		{
+			[`vta-btn-${shape}`]: shape,
 			[`vta-btn-${size}`]: size,
 			'vta-btn-ghost': variant === 'ghost',
 			'vta-btn-shadow': variant === 'shadow',

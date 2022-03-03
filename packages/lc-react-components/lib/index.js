@@ -79,13 +79,14 @@ const Loading = (props) => {
 Loading.displayName = 'VtaLoading';
 
 const Button = React__default.forwardRef((props, ref) => {
-    const { size, type = 'default', children, iconRight, icon, variant, htmlType = 'button', className: classNames = '', onClick, disabled, loading, prefix, suffix } = props, attrs = __rest(props, ["size", "type", "children", "iconRight", "icon", "variant", "htmlType", "className", "onClick", "disabled", "loading", "prefix", "suffix"]);
+    const { size, shape, type = 'default', children, iconRight, icon, variant, htmlType = 'button', className: classNames = '', onClick, disabled, loading, prefix, suffix } = props, attrs = __rest(props, ["size", "shape", "type", "children", "iconRight", "icon", "variant", "htmlType", "className", "onClick", "disabled", "loading", "prefix", "suffix"]);
     const buttonRef = ref || React__default.createRef();
     const classes = useClasses('vta-btn', `vta-btn-${type}`, {
+        [`vta-btn-${shape}`]: shape,
         [`vta-btn-${size}`]: size,
         'vta-btn-ghost': variant === 'ghost',
         'vta-btn-shadow': variant === 'shadow',
-        'vtn-button-pointer': loading
+        'vtn-button-pointer': loading,
     }, classNames);
     const waveRef = useRef(null);
     const [longWidth, setLongWidth] = useState(0);
@@ -105,7 +106,7 @@ const Button = React__default.forwardRef((props, ref) => {
             if (rect) {
                 setDrip({
                     x: e.pageX - rect.x - longWidth / 2,
-                    y: e.pageY - rect.y - longWidth / 2
+                    y: e.pageY - rect.y - longWidth / 2,
                 });
             }
         }
@@ -115,17 +116,17 @@ const Button = React__default.forwardRef((props, ref) => {
         setisWaving(false);
     };
     return (React__default.createElement("button", Object.assign({}, attrs, { type: htmlType, disabled: disabled, onClick: handleClick, className: classes, ref: buttonRef }),
-        loading && React__default.createElement("span", { className: 'vta-btn-loading' },
-            React__default.createElement(Loading, null)),
-        prefix && React__default.createElement("span", { className: 'vta-btn-prefix' }, prefix),
+        loading && (React__default.createElement("span", { className: "vta-btn-loading" },
+            React__default.createElement(Loading, null))),
+        prefix && React__default.createElement("span", { className: "vta-btn-prefix" }, prefix),
         React__default.createElement("span", null, children),
-        suffix && React__default.createElement("span", { className: 'vta-btn-suffix' }, suffix),
-        React__default.createElement("span", { ref: waveRef, className: 'wave-wrapper' },
-            React__default.createElement("div", { onAnimationEnd: (e) => handleWaveAnimationComplete(), className: useClasses('wave', { 'rippleEffect': isWaving }), style: {
+        suffix && React__default.createElement("span", { className: "vta-btn-suffix" }, suffix),
+        React__default.createElement("span", { ref: waveRef, className: "wave-wrapper" },
+            React__default.createElement("div", { onAnimationEnd: (e) => handleWaveAnimationComplete(), className: useClasses('wave', { rippleEffect: isWaving }), style: {
                     height: longWidth + 'px',
                     width: longWidth + 'px',
                     top: drip.y + 'px',
-                    left: drip.x + 'px'
+                    left: drip.x + 'px',
                 } }))));
 });
 Button.displayName = 'VtaButton';

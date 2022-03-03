@@ -1,3 +1,40 @@
+# (2022-03-03)
+
+### Bug Fixes
+
+- **config:** git ignore lib and dist ([18cfb42](https://github.com/Ljp10086/lc-component/commit/18cfb42b2cc31ba393e1423c9083fca38fb1c395))
+- **icon:** remove i element ([b304ed7](https://github.com/Ljp10086/lc-component/commit/b304ed79473c383afb8e56e398f069ef897b0cb1))
+- linebreak style ([3ad1000](https://github.com/Ljp10086/lc-component/commit/3ad100066e7f55bc18a6cfd2ae42e58a8eb34727))
+- publishConfig ([b42b468](https://github.com/Ljp10086/lc-component/commit/b42b4686447e9fe43e7b15a3e7d913c31707858e))
+- reade me ([5ba971a](https://github.com/Ljp10086/lc-component/commit/5ba971ad6df3c96337a5cf5b83a843d4f4012401))
+
+### Features
+
+- 0.0.1 ([9d993c1](https://github.com/Ljp10086/lc-component/commit/9d993c12318dd7cd1a6c950a24da77a3f7691db1))
+- add displayName ([fe5ccc8](https://github.com/Ljp10086/lc-component/commit/fe5ccc8d7d879db303d27ae4fba1b72d60536b96))
+- colors ([a485c8f](https://github.com/Ljp10086/lc-component/commit/a485c8ff8de67043a521be21d6695632fd052823))
+- colors ([0eae7ed](https://github.com/Ljp10086/lc-component/commit/0eae7edbaa73202a67b189afc6bf0fd94f2e716e))
+- **components:** add button components ([75ea39b](https://github.com/Ljp10086/lc-component/commit/75ea39bb626568e7b3bd24b6d0c4deb29ee699be))
+- **config:** ignore linter ([f98fe69](https://github.com/Ljp10086/lc-component/commit/f98fe69c7cf1e27fe68388e45c6e11591e139ea5))
+- dot ([9034635](https://github.com/Ljp10086/lc-component/commit/9034635f907b3c44040c46f920c50aa7377c8576))
+- first commit ([3a2bb8e](https://github.com/Ljp10086/lc-component/commit/3a2bb8ef093b82a434e8da8df2805f272a4db119))
+- **global:** add commitizen ([24beafd](https://github.com/Ljp10086/lc-component/commit/24beafd6d662fdf4d90e0ae8aabad439f3e9c891))
+- **icon:** add icon ([fec815e](https://github.com/Ljp10086/lc-component/commit/fec815e577fa640d99870727e7849613fce8effc))
+- **icon:** add icon ([8f59e8a](https://github.com/Ljp10086/lc-component/commit/8f59e8a64007ca347c335e1220fb704bbbec386c))
+- icons ([6804e5f](https://github.com/Ljp10086/lc-component/commit/6804e5f181a7765ee674d290a75abff4e8799f4e))
+- icons ([617aad9](https://github.com/Ljp10086/lc-component/commit/617aad9f3f1b5309c4a0d4551d6c8d17333ea0ae))
+- init ([cadc8ee](https://github.com/Ljp10086/lc-component/commit/cadc8ee640d4b7aef45f5934fdd59eff3cb35b5e))
+- ject ([b73288f](https://github.com/Ljp10086/lc-component/commit/b73288f4f6c4050f626290e0bc9d7d826201920d))
+- jest for lc-component ([e677084](https://github.com/Ljp10086/lc-component/commit/e677084242511f93cdf989967a7eb1fedc6d95c9))
+- loading ([1dfe69e](https://github.com/Ljp10086/lc-component/commit/1dfe69ef706b41d4da5fdf8a1746aaba4121fbc8))
+- lock ([28d7871](https://github.com/Ljp10086/lc-component/commit/28d78717117a164da353be2be968139f44b0c83e))
+- prettier ([def462b](https://github.com/Ljp10086/lc-component/commit/def462b8fcde98aaac45d9ff8fe8ee6455e029e7))
+- reademe ([1950755](https://github.com/Ljp10086/lc-component/commit/1950755d71fd8fe3888718a3179e96aaa38ba76d))
+- test ([869d497](https://github.com/Ljp10086/lc-component/commit/869d4979fe1f38a03b22a5049da53512e523b03b))
+- test ([56f1346](https://github.com/Ljp10086/lc-component/commit/56f1346027e6371af2e46e28224c29ec2e827402))
+- test ([2df38a2](https://github.com/Ljp10086/lc-component/commit/2df38a217dbf3c1beaa36b3f350f7fd86ec3711b))
+- types ([08529f1](https://github.com/Ljp10086/lc-component/commit/08529f19e0260a9cbe9e401cf5b9157c89f9728a))
+
 # (2022-03-01)
 
 ### Bug Fixes

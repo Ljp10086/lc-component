@@ -41,7 +41,7 @@ export const styleParse = (svgStr: string) => {
 	);
 	return reactStyleSvg.replace(
 		/<svg(.*?)>/gi,
-		'<svg$1 data-testid="icon" ref={svgRef} {...rest} style={{width: size, height: size, color }}>',
+		'<svg$1 data-testid="icon" ref={svgRef} {...rest} style={{width: size, height: size, color, verticalAlign: "text-top" }}>',
 	);
 };
 
