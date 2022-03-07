@@ -1,0 +1,7 @@
+.generate-columns(@n: 24, @class) when (@n > 0) {
+	&-@{class}-@{n} {
+		width: percentage(@n / 24);
+	}
+
+	.generate-columns(@n - 1, @class);
+}

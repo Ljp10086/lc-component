@@ -136,11 +136,62 @@ const Badge = (props) => {
     const classes = useClasses('vta-badge', `vta-badge-${size}`, {
         [`vta-badge-${type}`]: type,
         [`vta-badge-contrast`]: variant === 'contrast',
-        [`vta-badge-outline`]: outline
+        [`vta-badge-outline`]: outline,
     });
     return (React__default.createElement("div", { className: classes },
         React__default.createElement("span", null, children)));
 };
 Badge.displayName = 'VtaBadge';
 
-export { Badge, Button, Loading, StatusDot, useClasses };
+const ContainerContext = React__default.createContext({});
+
+const GridContainer = (props) => {
+    const { justify, alignItems, wrap, gap, children, className = '', style } = props, attrs = __rest(props, ["justify", "alignItems", "wrap", "gap", "children", "className", "style"]);
+    const styles = {
+        justifyContent: justify,
+        alignItems,
+        flexWrap: wrap,
+    };
+    if (gap) {
+        if (Array.isArray(gap)) {
+            const rowGap = gap[0];
+            styles.rowGap = rowGap;
+            const columnGap = gap[1];
+            styles.marginLeft = -columnGap;
+            styles.marginRight = -columnGap;
+        }
+        else {
+            const rowGap = gap;
+            styles.rowGap = rowGap;
+            const columnGap = gap;
+            styles.marginLeft = -columnGap;
+            styles.marginRight = -columnGap;
+        }
+    }
+    const classes = useClasses('vta-grid-container');
+    return (React__default.createElement(ContainerContext.Provider, { value: { gap } },
+        React__default.createElement("div", Object.assign({ style: Object.assign(Object.assign({}, style), styles), className: classes }, attrs), children)));
+};
+
+const Grid = (props) => {
+    const { xs, sm, md, lg, xl, children, className = '', style } = props, attrs = __rest(props, ["xs", "sm", "md", "lg", "xl", "children", "className", "style"]);
+    const { gap } = React__default.useContext(ContainerContext);
+    const classes = useClasses('vta-grid', {
+        [`vta-grid-xs-${xs}`]: xs,
+        [`vta-grid-sm-${sm}`]: sm,
+        [`vta-grid-md-${md}`]: md,
+        [`vta-grid-lg-${lg}`]: lg,
+        [`vta-grid-xl-${xl}`]: xl,
+    });
+    const mergedStyle = {};
+    if (gap) {
+        const gutter = Array.isArray(gap) ? gap[1] : gap;
+        mergedStyle.paddingLeft = gutter;
+        mergedStyle.paddingRight = gutter;
+    }
+    return (React__default.createElement("div", { className: classes, style: Object.assign({}, mergedStyle) },
+        React__default.createElement("div", Object.assign({ className: className }, attrs, { style: Object.assign({}, style) }), children)));
+};
+Grid.displayName = 'VtaGrid';
+
+export { Badge, Button, GridContainer as Container, Grid, Loading, StatusDot, useClasses };

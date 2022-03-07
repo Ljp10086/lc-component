@@ -1,0 +1,25 @@
+@import './mixins.less';
+
+.vta-grid {
+	min-width: 1px;
+	max-width: 100%;
+	height: auto;
+
+	.generate-columns(24, xs);
+
+	@media (min-width: 576px) {
+		.generate-columns(24, sm);
+	}
+
+	@media (min-width: 768px) {
+		.generate-columns(24, md);
+	}
+
+	@media (min-width: 992px) {
+		.generate-columns(24, lg);
+	}
+
+	@media (min-width: 1200px) {
+		.generate-columns(24, xl);
+	}
+}
