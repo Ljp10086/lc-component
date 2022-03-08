@@ -79,7 +79,7 @@ const Loading = (props) => {
 Loading.displayName = 'VtaLoading';
 
 const Button = React__default.forwardRef((props, ref) => {
-    const { size, shape, type = 'default', children, iconRight, icon, variant, htmlType = 'button', className: classNames = '', onClick, disabled, loading, prefix, suffix } = props, attrs = __rest(props, ["size", "shape", "type", "children", "iconRight", "icon", "variant", "htmlType", "className", "onClick", "disabled", "loading", "prefix", "suffix"]);
+    const { size, shape, type = 'default', children, variant, htmlType = 'button', className: classNames = '', onClick, disabled, loading, prefix, suffix } = props, attrs = __rest(props, ["size", "shape", "type", "children", "variant", "htmlType", "className", "onClick", "disabled", "loading", "prefix", "suffix"]);
     const buttonRef = ref || React__default.createRef();
     const classes = useClasses('vta-btn', `vta-btn-${type}`, {
         [`vta-btn-${shape}`]: shape,
@@ -112,7 +112,7 @@ const Button = React__default.forwardRef((props, ref) => {
         }
         onClick === null || onClick === void 0 ? void 0 : onClick(e);
     };
-    const handleWaveAnimationComplete = (e) => {
+    const handleWaveAnimationComplete = () => {
         setisWaving(false);
     };
     return (React__default.createElement("button", Object.assign({}, attrs, { type: htmlType, disabled: disabled, onClick: handleClick, className: classes, ref: buttonRef }),
@@ -122,7 +122,7 @@ const Button = React__default.forwardRef((props, ref) => {
         React__default.createElement("span", null, children),
         suffix && React__default.createElement("span", { className: "vta-btn-suffix" }, suffix),
         React__default.createElement("span", { ref: waveRef, className: "wave-wrapper" },
-            React__default.createElement("div", { onAnimationEnd: (e) => handleWaveAnimationComplete(), className: useClasses('wave', { rippleEffect: isWaving }), style: {
+            React__default.createElement("div", { onAnimationEnd: () => handleWaveAnimationComplete(), className: useClasses('wave', { rippleEffect: isWaving }), style: {
                     height: longWidth + 'px',
                     width: longWidth + 'px',
                     top: drip.y + 'px',
@@ -197,10 +197,39 @@ Grid.displayName = 'VtaGrid';
 const Link = (props) => {
     const { className: classNames = '', children, variant } = props, attrs = __rest(props, ["className", "children", "variant"]);
     const classes = useClasses('vta-link', {
-        [`vta-link-${variant}`]: variant
+        [`vta-link-${variant}`]: variant,
     }, classNames);
-    return React__default.createElement("a", Object.assign({}, attrs, { className: classes }), children);
+    return (React__default.createElement("a", Object.assign({}, attrs, { className: classes }), children));
 };
 Link.displayName = 'VtaLink';
 
-export { Badge, Button, GridContainer as Container, Grid, Link, Loading, StatusDot, useClasses };
+const Checkbox = React.forwardRef((props, ref) => {
+    const { className: classNames = '', checked = false, onChange, children, fullWidth, disabled, label } = props, attrs = __rest(props, ["className", "checked", "onChange", "children", "fullWidth", "disabled", "label"]);
+    const checkboxRef = ref || React.createRef();
+    const hasChildren = React.Children.count(children) !== 0 && children;
+    const classes = useClasses(classNames, 'vta-checkbox', {
+        'vta-checkbox-disabled': disabled,
+        'vta-checkbox-fullWidth': fullWidth,
+    });
+    const displayBoxClasses = useClasses('vta-checkbox-display-box', {
+        'vta-checkbox-display-box-checked': checked,
+        'vta-checkbox-checked': checked,
+    });
+    const handleChange = (e) => {
+        if (disabled) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+        onChange === null || onChange === void 0 ? void 0 : onChange(e);
+    };
+    return (React.createElement("div", null,
+        label && React.createElement("div", { className: "vta-checkbox-label" }, label),
+        React.createElement("label", { className: classes },
+            React.createElement("input", Object.assign({ disabled: disabled, onChange: handleChange }, attrs, { className: "vta-checkbox-ele", type: "checkbox", ref: checkboxRef })),
+            React.createElement("span", { className: displayBoxClasses }),
+            hasChildren && React.createElement("span", { className: "vta-checkbox-text" }, children))));
+});
+Checkbox.displayName = 'VtaCheckbox';
+
+export { Badge, Button, Checkbox, GridContainer as Container, Grid, Link, Loading, StatusDot, useClasses };

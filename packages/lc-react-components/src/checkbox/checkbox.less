@@ -1,0 +1,75 @@
+@keyframes checkboxEase {
+	0% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.vta-checkbox {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+
+	&-display-box {
+		position: relative;
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		border: 1px solid var(--primary-foreground);
+		border-radius: 4px;
+		overflow: hidden;
+
+		&-checked {
+			&::after {
+				position: absolute;
+				top: calc(50% - 2.5px);
+				left: 50%;
+				width: 10px;
+				height: 5px;
+				content: '';
+				background-color: transparent;
+				border-left: 1px solid var(--primary-background);
+				border-bottom: 1px solid var(--primary-background);
+				transform: translate(-50%, -50%) rotate(-45deg);
+			}
+		}
+	}
+
+	&-disabled {
+		pointer-events: none;
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+
+	&-ele {
+		width: 0;
+		height: 0;
+	}
+
+	&-fullWidth {
+		width: 100%;
+	}
+
+	&-label {
+		max-width: 100%;
+		display: block;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--secondary-default);
+		margin-bottom: 4px;
+	}
+
+	&-checked {
+		background-color: var(--primary-foreground);
+		animation: checkboxEase 0.33s ease-in-out;
+		animation-fill-mode: backwards;
+	}
+
+	&-text {
+		font-size: 0.925rem;
+		margin-left: 8px;
+	}
+}

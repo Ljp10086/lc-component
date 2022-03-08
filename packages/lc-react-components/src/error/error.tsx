@@ -2,7 +2,9 @@ import useClasses from '../use-classes/index';
 import * as React from 'react';
 import './status-dot.less';
 
-interface Props {}
+interface Props {
+	label?: string;
+}
 
 type NativeAttrs = Omit<React.HTMLAttributes<unknown>, keyof Props>;
 
