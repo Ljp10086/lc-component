@@ -194,4 +194,13 @@ const Grid = (props) => {
 };
 Grid.displayName = 'VtaGrid';
 
-export { Badge, Button, GridContainer as Container, Grid, Loading, StatusDot, useClasses };
+const Link = (props) => {
+    const { className: classNames = '', children, variant } = props, attrs = __rest(props, ["className", "children", "variant"]);
+    const classes = useClasses('vta-link', {
+        [`vta-link-${variant}`]: variant
+    }, classNames);
+    return React__default.createElement("a", Object.assign({}, attrs, { className: classes }), children);
+};
+Link.displayName = 'VtaLink';
+
+export { Badge, Button, GridContainer as Container, Grid, Link, Loading, StatusDot, useClasses };

@@ -1,0 +1,49 @@
+.vta-link {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	transition-property: opacity color;
+	transition-timing-function: ease;
+	transition-duration: 0.22s;
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+
+	&-highlight {
+		color: var(--vta-link-color);
+
+		&:hover {
+			background-image: linear-gradient(
+				var(--vta-link-color),
+				var(--vta-link-color)
+			);
+			background-size: 100% 1px;
+		}
+	}
+
+	&-primary {
+		color: currentColor;
+
+		&:hover {
+			background-image: linear-gradient(currentColor, currentColor);
+			background-size: 100% 1px;
+		}
+	}
+
+	&-blend {
+		color: currentColor;
+		background-image: linear-gradient(currentColor, currentColor);
+		background-size: 100% 1px;
+
+		&:hover {
+			opacity: 0.6;
+		}
+	}
+
+	&-secondary {
+		color: var(--accents-5);
+
+		&:hover {
+			color: var(--primary-foreground);
+		}
+	}
+}
