@@ -28,7 +28,6 @@ const RadioGroup: React.FC<RadioGroupProps> = (props) => {
 		name = '',
 		disabled,
 		// label,
-		...attrs
 	} = props;
 
 	const [selfValue, setSelfValue] = React.useState(value);

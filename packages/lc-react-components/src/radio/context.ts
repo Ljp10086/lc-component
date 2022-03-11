@@ -5,7 +5,9 @@ export type RadioValueType =
 	| ReadonlyArray<string>
 	| number
 	| undefined;
+
 export type RadioOnChangeType = (value: RadioValueType) => void;
+
 interface RadioContextType {
 	required?: boolean;
 	disabled?: boolean;

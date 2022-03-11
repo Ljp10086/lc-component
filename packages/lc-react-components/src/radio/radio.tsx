@@ -18,6 +18,8 @@ type NativeAttrs = Omit<React.InputHTMLAttributes<unknown>, keyof Props>;
 
 type RadioProps = Props & NativeAttrs;
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
 	const {
 		className: classNames = '',
