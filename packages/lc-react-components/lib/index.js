@@ -234,6 +234,8 @@ Checkbox.displayName = 'VtaCheckbox';
 
 const RadioContext = React__default.createContext({});
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const Radio = React.forwardRef((props, ref) => {
     const { className: classNames = '', value, checked, required, onChange, children, disabled, name } = props, attrs = __rest(props, ["className", "value", "checked", "required", "onChange", "children", "disabled", "name"]);
     const context = React.useContext(RadioContext);
@@ -266,9 +268,9 @@ const Radio = React.forwardRef((props, ref) => {
 Radio.displayName = 'VtaRadio';
 
 const RadioGroup = (props) => {
-    const { className: classNames = '', required, onChange, children, value, name = '', disabled } = props; 
+    const { className: classNames = '', required, onChange, children, value, name = '', disabled,
     // label,
-    __rest(props, ["className", "required", "onChange", "children", "value", "name", "disabled"]);
+     } = props;
     const [selfValue, setSelfValue] = React.useState(value);
     const radioChange = (ev) => {
         setSelfValue(ev);
@@ -288,4 +290,36 @@ const RadioGroup = (props) => {
 };
 RadioGroup.displayName = 'VtaRadioGroup';
 
-export { Badge, Button, Checkbox, GridContainer as Container, Grid, Link, Loading, Radio, RadioGroup, StatusDot, useClasses };
+const TextField = React__default.forwardRef((props, ref) => {
+    const { before, after, className: classNames = '', size, prefix, suffix, disabled, onFocus, onBlur } = props, attrs = __rest(props, ["before", "after", "className", "size", "prefix", "suffix", "disabled", "onFocus", "onBlur"]);
+    const [isFocus, setIsFocus] = React__default.useState(false);
+    const classes = useClasses('vta-text-field');
+    const inputWrapperClasses = useClasses('vta-text-field-base', classNames, {
+        'vta-text-field-focus': isFocus,
+        [`vta-text-field-disabled`]: disabled,
+        [`vta-text-field-${size}`]: size,
+    });
+    const wrapperRef = useRef(null);
+    const inputRef = ref || React__default.createRef();
+    const handleFocus = (e) => {
+        setIsFocus(true);
+        onFocus === null || onFocus === void 0 ? void 0 : onFocus(e);
+    };
+    const handleBlur = (e) => {
+        setIsFocus(false);
+        onBlur === null || onBlur === void 0 ? void 0 : onBlur(e);
+    };
+    const handleWrapperClick = () => {
+        inputRef.current.focus();
+    };
+    return (React__default.createElement("div", { className: classes },
+        !!before && React__default.createElement("div", { className: "vta-text-field-before" }, before),
+        React__default.createElement("div", { onClick: handleWrapperClick, ref: wrapperRef, className: inputWrapperClasses },
+            !!prefix && React__default.createElement("div", { className: "vta-text-field-prefix" }, prefix),
+            React__default.createElement("input", Object.assign({ onFocus: handleFocus, onBlur: handleBlur, ref: inputRef, className: "vta-text-field-self", type: "text" }, attrs)),
+            !!suffix && React__default.createElement("div", { className: "vta-text-field-suffix" }, suffix)),
+        !!after && React__default.createElement("div", { className: "vta-text-field-after" }, after)));
+});
+TextField.displayName = 'VtaTextField';
+
+export { Badge, Button, Checkbox, GridContainer as Container, Grid, Link, Loading, Radio, RadioGroup, StatusDot, TextField, useClasses };
